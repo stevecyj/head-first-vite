@@ -29,3 +29,13 @@ pnpm i -D @emotion/react @emotion/styled @emotion/css
 ```shell
 pnpm i -D @emotion/babel-plugin
 ```
+
+## tailwindcss
+
+```shell
+pnpm i -D tailwindcss postcss autoprefixer
+```
+    
+```shell
+npx tailwindcss init 
+```
