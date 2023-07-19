@@ -10,6 +10,9 @@ const variablePath = resolve("src/variables.scss");
 export default defineConfig({
   plugins: [react()],
   css: {
+    modules: {
+      generateScopedName: "[name]__[local]___[hash:base64:5]",
+    },
     preprocessorOptions: {
       scss: {
         additionalData: `@import "${variablePath}";`,
