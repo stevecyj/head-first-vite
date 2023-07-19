@@ -9,7 +9,14 @@ const variablePath = resolve("src/variables.scss");
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      babel: {
+        plugins: ["babel-plugin-styled-components", "@emotion/babel-plugin"],
+      },
+      jsxImportSource: "@emotion/react",
+    }),
+  ],
   css: {
     postcss: {
       plugins: [autoprefixer({ overrideBrowserslist: ["last 2 versions"] })],
