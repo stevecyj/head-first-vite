@@ -1,20 +1,15 @@
-import {css} from '@emotion/react'
+// import { css } from "@emotion/react";
 
-const color = 'darkgreen'
+const color = "darkgreen";
+const base = {
+  backgroundColor: "hotpink",
+  "&:hover": {
+    color: `${color}`,
+  },
+};
 
 const TextBox = () => {
-  return(
-    <div
-      css={css`
-        background-color: hotpink;
-        &:hover {
-          color: ${color};
-        }
-      `}
-    >
-    This has a hotpink background.
-  </div>
-  )
-}
+  return <div css={base}>This has a hotpink background.</div>;
+};
 
 export default TextBox;
