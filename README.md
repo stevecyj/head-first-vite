@@ -39,3 +39,29 @@ pnpm i -D tailwindcss postcss autoprefixer
 ```shell
 npx tailwindcss init 
 ```
+```javascript
+// postcss.config.js
+import autoprefixer from 'autoprefixer';
+import tailwindcss from 'tailwindcss';
+import tailwindConfig from './tailwind.config.js';
+export default {
+  plugins: [
+    tailwindcss(tailwindConfig),
+    autoprefixer({
+    overrideBrowserslist: ['safari >= 6', 'ff >= 10']
+    })
+  ]
+};
+
+// vite.config.js
+import postcssConfig from './postcss.config.js';
+
+export default defineConfig({
+// xxx
+  css: {
+   postcss: postcssConfig
+  }
+// xxx
+})
+
+```

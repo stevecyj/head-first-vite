@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { normalizePath } from "vite";
 import path from "path";
-import autoprefixer from "autoprefixer";
+import postcssConfig from "./postcss.config.js";
 
 const resolve = (str: string) => normalizePath(path.resolve(__dirname, str));
 const variablePath = resolve("src/variables.scss");
@@ -18,9 +18,7 @@ export default defineConfig({
     }),
   ],
   css: {
-    postcss: {
-      plugins: [autoprefixer({ overrideBrowserslist: ["last 2 versions"] })],
-    },
+    postcss: postcssConfig,
     modules: {
       generateScopedName: "[name]__[local]___[hash:base64:5]",
     },
