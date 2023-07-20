@@ -85,3 +85,9 @@ pnpm i eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @types
 <https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md>
 
 > If you are using the new JSX transform from React 17, you should disable this rule by extending react/jsx-runtime in your eslint config (add "plugin:react/jsx-runtime" to "extends").
+
+## Pretter
+
+```shell
+echo {}> .prettierrc.json
+```
