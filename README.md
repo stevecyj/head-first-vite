@@ -1,7 +1,8 @@
 # head first vite
 
 ## reference
-https://github.com/sanyuan0704/juejin-book-vite
+
+<https://github.com/sanyuan0704/juejin-book-vite>
 
 ## node env
 
@@ -38,33 +39,45 @@ pnpm i -D @emotion/babel-plugin
 ```shell
 pnpm i -D tailwindcss postcss autoprefixer
 ```
-    
+
 ```shell
-npx tailwindcss init 
+npx tailwindcss init
 ```
+
 ```javascript
 // postcss.config.js
 import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';
 import tailwindConfig from './tailwind.config.js';
 export default {
-  plugins: [
-    tailwindcss(tailwindConfig),
-    autoprefixer({
-    overrideBrowserslist: ['safari >= 6', 'ff >= 10']
-    })
-  ]
+    plugins: [
+        tailwindcss(tailwindConfig),
+        autoprefixer({
+            overrideBrowserslist: ['safari >= 6', 'ff >= 10']
+        })
+    ]
 };
 
 // vite.config.js
 import postcssConfig from './postcss.config.js';
 
 export default defineConfig({
-// xxx
-  css: {
-   postcss: postcssConfig
-  }
-// xxx
+    // xxx
+    css: {
+        postcss: postcssConfig
+    }
+    // xxx
 })
+```
 
+## eslint
+
+![eslint](./reademe/eslintInstall.png)
+
+```shell
+pnpm i -D eslint
+```
+
+```shell
+pnpm i eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest -D
 ```
