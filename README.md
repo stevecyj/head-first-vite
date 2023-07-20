@@ -1,5 +1,8 @@
 # head first vite
 
+## reference
+https://github.com/sanyuan0704/juejin-book-vite
+
 ## node env
 
 ```shell
