@@ -7,7 +7,7 @@ export default {
   plugins: [
     tailwindcss(tailwindConfig),
     autoprefixer({
-      overrideBrowserslist: ["safari >= 6", "ff >= 10"],
+      overrideBrowserslist: ["last 2 versions", "> 1%"],
     }),
   ],
 };
