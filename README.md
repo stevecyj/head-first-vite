@@ -86,8 +86,31 @@ pnpm i eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @types
 
 > If you are using the new JSX transform from React 17, you should disable this rule by extending react/jsx-runtime in your eslint config (add "plugin:react/jsx-runtime" to "extends").
 
-## Pretter
+## Prettier
 
 ```shell
 echo {}> .prettierrc.json
+```
+
+```shell
+pnpm i eslint-config-prettier eslint-plugin-prettier -D
+```
+
+* eslint-config-prettier: 覆盖掉 eslint 中與 prettier 衝突的規則，<https://github.com/prettier/eslint-config-prettier#installation>
+* eslint-plugin-prettier: 讓 prettier 接管 `eslint --fix` 的功能，
+  <https://github.com/prettier/eslint-plugin-prettier>
+
+### Warning: React version not specified in eslint-plugin-react settings.
+
+> Warning: React version not specified in eslint-plugin-react settings. See https://github.com/jsx-eslint/eslint-plugin-react#configuration .
+
+* 在github issues <https://github.com/yannickcr/eslint-plugin-react/issues/1955>和<https://juejin.im/post/5c90da695188252daa18ec21>中找到了答案
+* 在eslintrc.cjs 中新增 settings
+
+```javascript
+settings: {
+    react: {
+        version: "detect"
+    }
+}
 ```

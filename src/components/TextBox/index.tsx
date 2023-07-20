@@ -4,17 +4,17 @@ const color = "darkgreen";
 const base = {
   backgroundColor: "hotpink",
   "&:hover": {
-    color: `${color}`,
-  },
+    color: `${color}`
+  }
 };
 
 const danger = {
-  color: "red",
+  color: "red"
 };
 
 const base2 = {
   "background-color": "darkgreen",
-  color: "turquoise",
+  color: "turquoise"
 };
 const TextBox = () => {
   return (

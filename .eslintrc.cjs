@@ -7,7 +7,9 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "prettier",
+    "plugin:prettier/recommended"
   ],
   overrides: [
     {
@@ -25,12 +27,18 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module"
   },
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["@typescript-eslint", "react", "prettier"],
   rules: {
+    "prettier/prettier": "error",
     indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
     "react/no-unknown-property": ["error", { ignore: ["css"] }]
+  },
+  settings: {
+    react: {
+      version: "detect"
+    }
   }
 };
