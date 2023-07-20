@@ -82,6 +82,13 @@ pnpm i -D eslint
 pnpm i eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest -D
 ```
 
+### for webstorm(不要裝到最新版)
+
+```javascript
+"@typescript-eslint/eslint-plugin": "^5.62.0",
+"@typescript-eslint/parser": "^5.62.0",
+```
+
 <https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md>
 
 > If you are using the new JSX transform from React 17, you should disable this rule by extending react/jsx-runtime in your eslint config (add "plugin:react/jsx-runtime" to "extends").
