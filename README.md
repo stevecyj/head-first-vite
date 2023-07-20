@@ -100,7 +100,7 @@ pnpm i eslint-config-prettier eslint-plugin-prettier -D
 * eslint-plugin-prettier: 讓 prettier 接管 `eslint --fix` 的功能，
   <https://github.com/prettier/eslint-plugin-prettier>
 
-### Warning: React version not specified in eslint-plugin-react settings.
+### Warning: React version not specified in eslint-plugin-react settings
 
 > Warning: React version not specified in eslint-plugin-react settings. See <https://github.com/jsx-eslint/eslint-plugin-react#configuration> .
 
@@ -147,14 +147,14 @@ echo {} > .stylelintrc.json
 ### for tailwindcss
 
 ```json
- "rules": {
+  "rules": {
     // xxx
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": [
-        true,
-        {
-            "ignoreAtRules": ["tailwind"]
-        }
+      true,
+      {
+        "ignoreAtRules": ["tailwind"]
+      }
     ]
     // xxx
   }
@@ -164,4 +164,82 @@ echo {} > .stylelintrc.json
 
 ```shell
 pnpm i vite-plugin-stylelint -D
+```
+
+## Husky
+
+```shell
+pnpm i husky -D
+```
+
+### steps
+
+* 初始化 Husky: npx husky install，并将 husky install作为项目启动前脚本
+
+```javascript
+{
+    "scripts": {
+
+        // 会在安装 npm 依赖后自动执行
+        "prepare": "husky install"
+
+    }
+}
+```
+
+* 添加 Husky 钩子，在终端执行如下命令:
+
+```shell
+npx husky add .husky/pre-commit "npm run lint"
+```
+
+### lint-staged
+
+```shell
+pnpm i -D lint-staged
+```
+
+```javascript
+{
+    // package.json
+    "lint-staged": {
+        "**/*.{js,jsx,tsx,ts}": [
+            "npm run lint:script",
+            "git add ."
+        ],
+        "**/*.{scss}": [
+            "npm run lint:style",
+            "git add ."
+        ]
+    }
+}
+```
+
+修改原本的 `npm run lint`
+
+```sh
+# .husky/pre-commit
+npx --no -- lint-staged
+```
+
+## commitlint
+
+link: <https://commitlint.js.org/#/>
+
+### install
+
+```shell
+pnpm i commitlint @commitlint/cli @commitlint/config-conventional -D
+```
+
+### configure
+
+```shell
+echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
+```
+
+### set Husky hook
+
+```shell
+npx husky add .husky/commit-msg "npx --no-install commitlint -e $HUSKY_GIT_PARAMS"
 ```
