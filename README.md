@@ -115,7 +115,9 @@ settings: {
 }
 ```
 
-### 開發時進行 eslint 檢查
+### 開發時進行 eslint 檢查，檢查結果顯示在 terminal
+
+```shell
 
 ```shell
 pnpm i -D vite-plugin-eslint
