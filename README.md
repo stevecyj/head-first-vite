@@ -524,3 +524,21 @@ echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitl
 ```shell
 npx husky add .husky/commit-msg "npx --no-install commitlint -e $HUSKY_GIT_PARAMS"
 ```
+
+## static resources
+
+### alias
+
+```javascript
+// vite.config.ts
+import path from 'path';
+
+{
+    resolve: {
+        // 别名配置
+        alias: {
+            '@assets': path.join(__dirname, 'src/assets')
+        }
+    }
+}
+```
