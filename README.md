@@ -102,7 +102,7 @@ pnpm i eslint-config-prettier eslint-plugin-prettier -D
 
 ### Warning: React version not specified in eslint-plugin-react settings.
 
-> Warning: React version not specified in eslint-plugin-react settings. See https://github.com/jsx-eslint/eslint-plugin-react#configuration .
+> Warning: React version not specified in eslint-plugin-react settings. See <https://github.com/jsx-eslint/eslint-plugin-react#configuration> .
 
 * 在github issues <https://github.com/yannickcr/eslint-plugin-react/issues/1955>和<https://juejin.im/post/5c90da695188252daa18ec21>中找到了答案
 * 在eslintrc.cjs 中新增 settings
@@ -158,4 +158,10 @@ echo {} > .stylelintrc.json
     ]
     // xxx
   }
+```
+
+### 開發時進行 stylelint 檢查，檢查結果顯示在 terminal
+
+```shell
+pnpm i vite-plugin-stylelint -D
 ```

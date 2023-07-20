@@ -4,6 +4,7 @@ import { normalizePath } from "vite";
 import path from "path";
 import postcssConfig from "./postcss.config.js";
 import viteEslint from "vite-plugin-eslint";
+import viteStylelint from "vite-plugin-stylelint";
 
 const resolve = (str: string) => normalizePath(path.resolve(__dirname, str));
 const variablePath = resolve("src/variables.scss");
@@ -17,7 +18,10 @@ export default defineConfig({
       },
       jsxImportSource: "@emotion/react"
     }),
-    viteEslint()
+    viteEslint(),
+    viteStylelint({
+      exclude: ["node_modules", "dist"]
+    })
   ],
   css: {
     postcss: postcssConfig,
