@@ -114,3 +114,20 @@ settings: {
     }
 }
 ```
+
+### 開發時進行 eslint 檢查
+
+```shell
+pnpm i -D vite-plugin-eslint
+```
+
+```javascript
+// vite.config.js
+import viteEslint from 'vite-plugin-eslint';
+
+export default defineConfig({
+    // xxx
+    plugins: [viteEslint()]
+    // xxx
+})
+```

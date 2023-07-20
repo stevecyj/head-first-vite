@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import { normalizePath } from "vite";
 import path from "path";
 import postcssConfig from "./postcss.config.js";
+import viteEslint from "vite-plugin-eslint";
 
 const resolve = (str: string) => normalizePath(path.resolve(__dirname, str));
 const variablePath = resolve("src/variables.scss");
@@ -12,20 +13,21 @@ export default defineConfig({
   plugins: [
     react({
       babel: {
-        plugins: ["babel-plugin-styled-components", "@emotion/babel-plugin"],
+        plugins: ["babel-plugin-styled-components", "@emotion/babel-plugin"]
       },
-      jsxImportSource: "@emotion/react",
+      jsxImportSource: "@emotion/react"
     }),
+    viteEslint()
   ],
   css: {
     postcss: postcssConfig,
     modules: {
-      generateScopedName: "[name]__[local]___[hash:base64:5]",
+      generateScopedName: "[name]__[local]___[hash:base64:5]"
     },
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "${variablePath}";`,
-      },
-    },
-  },
+        additionalData: `@import "${variablePath}";`
+      }
+    }
+  }
 });
