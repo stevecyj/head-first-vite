@@ -89,7 +89,7 @@ pnpm i eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @types
 ## Prettier
 
 ```shell
-echo {}> .prettierrc.json
+echo {} > .prettierrc.json
 ```
 
 ```shell
@@ -132,4 +132,30 @@ export default defineConfig({
     plugins: [viteEslint()]
     // xxx
 })
+```
+
+## Stylelint
+
+```shell
+pnpm i stylelint stylelint-prettier stylelint-config-prettier stylelint-config-recess-order stylelint-config-standard stylelint-config-standard-scss -D
+```
+
+```shell
+echo {} > .stylelintrc.json
+```
+
+### for tailwindcss
+
+```json
+ "rules": {
+    // xxx
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": [
+        true,
+        {
+            "ignoreAtRules": ["tailwind"]
+        }
+    ]
+    // xxx
+  }
 ```
