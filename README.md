@@ -151,22 +151,47 @@ export default defineConfig({
 
 ## eslint
 
-![eslint](./reademe/eslintInstall.png)
-
 ```shell
 pnpm i -D eslint
 ```
+
+![eslint](./reademe/eslintInstall.png)
 
 ```shell
 pnpm i eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest -D
 ```
 
-### for webstorm(不要裝到最新版)
+### 🧲 for webstorm(不要裝到最新版)
 
 ```javascript
 "@typescript-eslint/eslint-plugin": "^5.62.0",
 "@typescript-eslint/parser": "^5.62.0",
 ```
+
+### .eslintrc.cjs
+
+* parser 解析器
+
+```javascript
+    parser: '@typescript-eslint/parser'
+```
+
+* parserOptions 解析器選項
+  + ecmaVersion: latest
+  + sourceType: module (使用 ES Module)
+  + ecmaFeatures: 物件，jsx: true (使用 JSX)
+
+```javascript
+parserOptions: {
+    ecmaFeatures: {
+        jsx: true
+    },
+    ecmaVersion: "latest",
+    sourceType: "module"
+},
+```
+
+* rules 規則
 
 <https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md>
 
