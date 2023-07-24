@@ -18,6 +18,12 @@ npm i -g pnpm
 pnpm create vite
 ```
 
+## css 預處理器
+
+```shell
+pnpm i -D sass
+```
+
 ## styled components
 
 ```shell
