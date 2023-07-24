@@ -10,6 +10,14 @@
 16.14.0
 ```
 
+```shell
+npm i -g pnpm
+```
+
+```shell
+pnpm create vite
+```
+
 ## styled components
 
 ```shell
