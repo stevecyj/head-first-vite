@@ -24,6 +24,52 @@ pnpm create vite
 pnpm i -D sass
 ```
 
+## PostCSS
+
+```shell
+pnpm i -D autoprefixer
+```
+
+* Vite 配置文件(vite.config.ts)中如果有 PostCSS 配置的情况下会覆盖掉 postcss.config.js 的内容!
+* 搭配 tailwindcss 使用，看下方 tailwindcss 設定
+
+## CSS In JS
+
+```shell
+
+pnpm i -D babel-plugin-styled-components @emotion/babel-plugin @emotion/react
+```
+
+```javascript
+// vite.config.ts
+import {
+    defineConfig
+} from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+    plugins: [
+        react({
+            babel: {
+                // 加入 babel 插件
+                // 以下插件包都需要提前安装
+                // 当然，通过这个配置你也可以添加其它的 Babel 插件
+                plugins: [
+                    // 适配 styled-component
+                    "babel-plugin-styled-components"
+                    // 适配 emotion
+                    "@emotion/babel-plugin"
+                ]
+            },
+            // 注意: 对于 emotion，需要单独加上这个配置
+            // 通过 `@emotion/react` 包编译 emotion 中的特殊 jsx 语法
+            jsxImportSource: "@emotion/react"
+        })
+    ]
+})
+```
+
 ## styled components
 
 ```shell
@@ -59,6 +105,17 @@ npx tailwindcss init
 ```
 
 ```javascript
+// tailwind.config.js
+export default {
+    content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+};
+```
+
+```javascript
 // postcss.config.js
 import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';
@@ -82,6 +139,14 @@ export default defineConfig({
     }
     // xxx
 })
+```
+
+### 入口 css
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
 
 ## eslint
