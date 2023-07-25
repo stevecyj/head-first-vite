@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    node: true
   },
   extends: [
     "eslint:recommended",
@@ -37,7 +38,8 @@ module.exports = {
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"],
-    "react/no-unknown-property": ["error", { ignore: ["css"] }]
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
+    "@typescript-eslint/no-non-null-assertion": "off"
   },
   settings: {
     react: {
