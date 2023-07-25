@@ -423,7 +423,7 @@ import viteStylelint from '@amatlash/vite-plugin-stylelint';
 }
 ```
 
-## Husky
+## Husky + lint-staged
 
 ```shell
 pnpm i husky -D
@@ -450,11 +450,13 @@ pnpm i husky -D
 npx husky add .husky/pre-commit "npm run lint"
 ```
 
-### lint-staged
+### lint-staged (只對 staged files 執行 lint)
 
 ```shell
 pnpm i -D lint-staged
 ```
+
+package.json 設定
 
 ```javascript
 {
@@ -472,14 +474,14 @@ pnpm i -D lint-staged
 }
 ```
 
-修改原本的 `npm run lint`
+到 `.husky/pre-commit` 脚本中，修改原本的 `npm run lint`
 
 ```sh
 # .husky/pre-commit
 npx --no -- lint-staged
 ```
 
-## commitlint
+## commitlint (commit message 規範)
 
 link: <https://commitlint.js.org/#/>
 
@@ -494,6 +496,28 @@ pnpm i commitlint @commitlint/cli @commitlint/config-conventional -D
 ```shell
 echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
 ```
+
+### commit message 結構
+
+分2個部分
+
+```
+
+```JS
+// type 指提交的类型
+// subject 指提交的摘要信息
+<type>: <subject>
+```
+
+常用 type
+
+* feat: 新功能
+* fix: 修復 bug
+* chore: 不影響功能的修改
+* docs: 文件修改
+* perf: 性能優化
+* refactor: 重構代碼
+* test: 測試代碼
 
 ### set Husky hook
 
