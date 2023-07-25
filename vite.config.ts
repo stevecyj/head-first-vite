@@ -5,6 +5,7 @@ import path from "path";
 import postcssConfig from "./postcss.config.js";
 import viteEslint from "vite-plugin-eslint";
 import viteStylelint from "vite-plugin-stylelint";
+import svgr from "vite-plugin-svgr";
 
 const resolve = (str: string) => normalizePath(path.resolve(__dirname, str));
 const variablePath = resolve("src/variables.scss");
@@ -21,7 +22,8 @@ export default defineConfig({
     viteEslint(),
     viteStylelint({
       exclude: ["node_modules", "dist"]
-    })
+    }),
+    svgr()
   ],
   css: {
     postcss: postcssConfig,

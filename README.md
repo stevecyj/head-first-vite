@@ -587,3 +587,31 @@ import path from 'path';
 * Vue2: [vite-plugin-vue2-svg](https://github.com/pakholeung37/vite-plugin-vue2-svg)
 * Vue3: [vite-svg-loader](https://github.com/jpkleemans/vite-svg-loader)
 * React: [vite-plugin-svgr](https://github.com/pd4d10/vite-plugin-svgr)
+
+```shell
+pnpm i vite-plugin-svgr -D
+```
+
+```javascript
+// vite.config.ts
+import svgr from 'vite-plugin-svgr';
+
+{
+    plugins: [
+        // 其它插件省略
+        svgr()
+    ]
+}
+```
+
+tsconfig.json也要設定，否則會有類型錯誤
+
+```javascript
+// tsconfig.json
+{
+    "compilerOptions": {
+        // 省略其它配置
+        "types": ["vite-plugin-svgr/client"]
+    }
+}
+```
