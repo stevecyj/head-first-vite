@@ -581,3 +581,9 @@ import path from 'path';
     }
 }
 ```
+
+### SVG
+
+* Vue2: [vite-plugin-vue2-svg](https://github.com/pakholeung37/vite-plugin-vue2-svg)
+* Vue3: [vite-svg-loader](https://github.com/jpkleemans/vite-svg-loader)
+* React: [vite-plugin-svgr](https://github.com/pd4d10/vite-plugin-svgr)
