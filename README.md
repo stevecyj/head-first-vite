@@ -195,13 +195,18 @@ parserOptions: {
 
 ```javascript
 rules: {
-    "規則名": "配置",
+    "規則名": "規則配置",
     "prettier/prettier": "error",
     // xxx
-    "規則名": ["規則 ID", "配置"],
+    "規則名": ["規則 ID", "規則配置"],
     indent: ["error", 2],
 },
 ```
+
+* 規則 ID
+  + "off" 或 0 - 關閉規則
+  + "warn" 或 1 - 開啟規則，使用警告級別的錯誤：warn (不會使得程式停止運行)
+  + "error" 或 2 - 開啟規則，使用錯誤級別的錯誤：error (當被觸發的時候，程式會停止運行)
 
 ```javascript
 rules: {
@@ -216,11 +221,23 @@ rules: {
 },
 ```
 
-* 第一行 import 報錯
+* Disallow missing React when using JSX (react/react-in-jsx-scope)
 
 <https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md>
 
 > If you are using the new JSX transform from React 17, you should disable this rule by extending react/jsx-runtime in your eslint config (add "plugin:react/jsx-runtime" to "extends").
+
+### plugins
+
+```javascript
+// .eslintrc.js
+module.exports = {
+    // 添加 TS 规则，可省略`eslint-plugin`
+    plugins: ['@typescript-eslint']
+}
+```
+
+> plugins 添加後，預設沒有開啟任何規則，需要手動開啟
 
 ## Prettier
 
