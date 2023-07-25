@@ -34,6 +34,7 @@ export default defineConfig({
       }
     }
   },
+  // alias config
   resolve: {
     alias: {
       "@assets": path.join(__dirname, "src/assets")
