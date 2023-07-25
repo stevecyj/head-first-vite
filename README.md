@@ -525,6 +525,45 @@ echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitl
 npx husky add .husky/commit-msg "npx --no-install commitlint -e $HUSKY_GIT_PARAMS"
 ```
 
+### commitlint cjs 報錯
+
+<details>
+  <summary>錯誤訊息</summary>
+
+```shell
+node@10.9.1_@types+node@20.4.2_typescript@5.0.2/node_modules/ts-node/dist/index.js:851
+            return old(m, filename);
+                   ^
+Error [ERR_REQUIRE_ESM]: require() of ES Module /Volumes/data/Projects/head-first-vite/commitlint.config.js from /Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/loaders.js not supported.
+commitlint.config.js is treated as an ES module file as it is a .js file whose nearest parent package.json contains "type": "module" which declares all .js files in that package scope as ES modules.
+Instead rename commitlint.config.js to end in .cjs, change the requiring code to use dynamic import() which is available in all CommonJS modules, or change "type": "module" to "type": "commonjs" in /Volumes/data/Projects/head-first-vite/package.json to treat all .js files as CommonJS (using .mjs for all ES modules instead).
+
+    at Object.require.extensions.<computed> [as .js] (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/ts-node@10.9.1_@types+node@20.4.2_typescript@5.0.2/node_modules/ts-node/dist/index.js:851:20)
+    at module.exports (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/import-fresh@3.3.0/node_modules/import-fresh/index.js:32:59)
+    at loadJsSync (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/loaders.js:18:18)
+    at loadJs (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/loaders.js:29:12)
+    at async Explorer.loadFileContent (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/Explorer.js:90:14)
+    at async Explorer.createCosmiconfigResult (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/Explorer.js:98:25)
+    at async Explorer.loadSearchPlace (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/Explorer.js:75:12)
+    at async Explorer.searchDirectory (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/Explorer.js:60:27)
+    at async run (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/Explorer.js:41:22)
+    at async cacheWrapper (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/cacheWrapper.js:16:18)
+    at async Explorer.search (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/Explorer.js:34:12)
+    at async loadConfig (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/@commitlint+load@17.6.7/node_modules/@commitlint/load/lib/utils/load-config.js:40:19)
+    at async load (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/@commitlint+load@17.6.7/node_modules/@commitlint/load/lib/load.js:19:20)
+    at async main (/Volumes/data/Projects/head-first-vite/node_modules/.pnpm/@commitlint+cli@17.6.7/node_modules/@commitlint/cli/lib/cli.js:194:20) {
+  code: 'ERR_REQUIRE_ESM',
+  filepath: '/Volumes/data/Projects/head-first-vite/commitlint.config.js'
+}
+husky - commit-msg hook exited with code 1 (error)
+```
+
+</details>
+
+* 原因: 由於在commitlint.config.js檔案中使用了ES模塊的語法，而該檔案的父級package.json中聲明了"type": "module"，將所有.js文件視為ES模塊。然而，在引用這個commitlint.config.js的地方（在/head-first-vite/node_modules/.pnpm/cosmiconfig@8.2.0/node_modules/cosmiconfig/dist/loaders.js）使用了CommonJS的require語法，這導致了錯誤。
+* 將commitlint.config.js重新命名為commitlint.config.cjs：
+將.js後綴改為.cjs，這樣Node.js會將該文件視為CommonJS模塊，不再報錯。
+
 ## static resources
 
 ### alias
