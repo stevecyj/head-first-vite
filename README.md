@@ -193,6 +193,31 @@ parserOptions: {
 
 * rules 規則
 
+```javascript
+rules: {
+    "規則名": "配置",
+    "prettier/prettier": "error",
+    // xxx
+    "規則名": ["規則 ID", "配置"],
+    indent: ["error", 2],
+},
+```
+
+```javascript
+rules: {
+    "prettier/prettier": "error",
+    indent: ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    quotes: ["error", "double"],
+    semi: ["error", "always"],
+    "react/no-unknown-property": ["error", {
+        ignore: ["css"]
+    }]
+},
+```
+
+* 第一行 import 報錯
+
 <https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md>
 
 > If you are using the new JSX transform from React 17, you should disable this rule by extending react/jsx-runtime in your eslint config (add "plugin:react/jsx-runtime" to "extends").
