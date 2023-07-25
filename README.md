@@ -290,6 +290,21 @@ module.exports = {
 };
 ```
 
+### ESLint + Prettier
+
+```javascript
+{
+    "scripts": {
+        // 省略已有 script
+        "lint:script": "eslint --ext .js,.jsx,.ts,.tsx --fix --quiet ./src",
+    }
+}
+```
+
+```shell
+pnpm run lint:script
+```
+
 ### Warning: React version not specified in eslint-plugin-react settings
 
 > Warning: React version not specified in eslint-plugin-react settings. See <https://github.com/jsx-eslint/eslint-plugin-react#configuration> .
@@ -305,9 +320,7 @@ settings: {
 }
 ```
 
-### 開發時進行 eslint 檢查，檢查結果顯示在 terminal
-
-```shell
+### 開發時通過 vite plugin 的方式進行 eslint 檢查，檢查結果顯示在 terminal
 
 ```shell
 pnpm i -D vite-plugin-eslint
@@ -334,6 +347,30 @@ pnpm i stylelint stylelint-prettier stylelint-config-prettier stylelint-config-r
 echo {} > .stylelintrc.json
 ```
 
+```json
+// .stylelintrc.json
+{
+  "plugins": ["stylelint-prettier"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order",
+    "stylelint-config-prettier",
+    "stylelint-prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": [
+        true,
+        {
+            "ignoreAtRules": ["tailwind"]
+        }
+    ]
+  }
+}
+```
+
 ### for tailwindcss
 
 ```json
@@ -350,10 +387,40 @@ echo {} > .stylelintrc.json
   }
 ```
 
+### scripts 整合 stylelint
+
+```json
+{
+  "scripts": {
+    // 整合 lint 命令
+    "lint": "npm run lint:script && npm run lint:style",
+    // stylelint 命令
+    "lint:style": "stylelint --fix \"src/**/*.{css,scss}\""
+  }
+}
+
+```
+
 ### 開發時進行 stylelint 檢查，檢查結果顯示在 terminal
 
 ```shell
 pnpm i vite-plugin-stylelint -D
+```
+
+```json
+import viteStylelint from '@amatlash/vite-plugin-stylelint';
+// 注意: Vite 3.x 以及以后的版本需要引入 vite-plugin-stylelint
+
+// 具体配置
+{
+  plugins: [
+    // 省略其它插件
+    viteStylelint({
+      // 对某些文件排除检查
+      exclude: /windicss|node_modules/
+    }),
+  ]
+}
 ```
 
 ## Husky
