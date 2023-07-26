@@ -3,6 +3,12 @@ import { ReactComponent as ReactLogo } from "@assets/icons/logo.svg";
 import packageObj from "../../../package.json";
 console.log("package", packageObj.version);
 
+import Worker from "./example.js?worker";
+const worker = new Worker();
+worker.addEventListener("message", (event) => {
+  console.log("event", event);
+});
+
 import logoSrc from "@assets/imgs/vite.png";
 export function Header() {
   return (

@@ -501,12 +501,11 @@ echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitl
 
 分2個部分
 
-```
-
 ```JS
 // type 指提交的类型
 // subject 指提交的摘要信息
-<type>: <subject>
+<
+type >: < subject >
 ```
 
 常用 type
@@ -635,4 +634,31 @@ tsconfig.json也要設定，否則會有類型錯誤
 ```javascript
 import packageObj from "../../../package.json";
 console.log("package", packageObj.version);
+```
+
+### web worker script
+
+```javascript
+// Header/example.js
+const start = () => {
+    let count = 0;
+    setInterval(() => {
+        // 给主线程传值
+        postMessage(++count);
+    }, 2000);
+};
+
+start();
+```
+
+在 Header 組件中引入，結尾加上 `?worker` 後綴
+
+```javascript
+import Worker from './example.js?worker';
+// 1. 初始化 Worker 实例
+const worker = new Worker();
+// 2. 主线程监听 worker 的信息
+worker.addEventListener('message', (e) => {
+    console.log(e);
+});
 ```
