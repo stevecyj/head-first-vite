@@ -674,3 +674,47 @@ worker.addEventListener('message', (e) => {
 
 * `pnpm run dev`: process.env. NODE_ENV = development
 * `pnpm run build`: process.env. NODE_ENV = production
+
+### 圖片壓縮
+
+```shell
+pnpm i vite-plugin-imagemin -D
+```
+
+```javascript
+//vite.config.ts
+import viteImagemin from 'vite-plugin-imagemin';
+
+{
+    plugins: [
+        // 忽略前面的插件
+        viteImagemin({
+            // 无损压缩配置，无损压缩下图片质量不会变差
+            optipng: {
+                optimizationLevel: 7
+            },
+            // 有损压缩配置，有损压缩下图片质量可能会变差
+            pngquant: {
+                quality: [0.8, 0.9],
+            },
+            // svg 优化
+            svgo: {
+                plugins: [{
+                        name: 'removeViewBox'
+                    },
+                    {
+                        name: 'removeEmptyAttrs',
+                        active: false
+                    }
+                ]
+            }
+        })
+    ]
+}
+```
+
+```shell
+pnpm run build
+```
+
+![imagemin](./reademe/imagemin.png)
