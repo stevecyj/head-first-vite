@@ -10,6 +10,9 @@ import svgr from "vite-plugin-svgr";
 const resolve = (str: string) => normalizePath(path.resolve(__dirname, str));
 const variablePath = resolve("src/variables.scss");
 
+const isProduction = process.env.NODE_ENV === "production";
+const CDN_URL = "https://xxx.xxx.xxx";
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -44,5 +47,6 @@ export default defineConfig({
   },
   json: {
     stringify: true
-  }
+  },
+  base: isProduction ? `${CDN_URL}/` : "/"
 });

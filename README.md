@@ -662,3 +662,8 @@ worker.addEventListener('message', (e) => {
     console.log(e);
 });
 ```
+
+### 生產環境處理
+
+* `pnpm run dev`: process.env. NODE_ENV = development
+* `pnpm run build`: process.env. NODE_ENV = production
