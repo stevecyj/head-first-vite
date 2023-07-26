@@ -615,3 +615,24 @@ tsconfig.json也要設定，否則會有類型錯誤
     }
 }
 ```
+
+### JSON
+
+```javascript
+// vite.config.ts
+
+{
+    json: {
+
+        stringify: true
+
+    }
+}
+```
+
+> 這樣會將 JSON 的內容解析為export default JSON.parse("xxx")，這樣會失去按名導出的能力，不過在 JSON 數據量比較大的時候，可以優化解析性能。
+
+```javascript
+import packageObj from "../../../package.json";
+console.log("package", packageObj.version);
+```
