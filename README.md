@@ -94,6 +94,13 @@ pnpm i -D @emotion/react @emotion/styled @emotion/css
 pnpm i -D @emotion/babel-plugin
 ```
 
+```javascript
+// src/vite-env.d.ts
+
+/// <reference types="vite/client" />
+/// <reference types="@emotion/react/types/css-prop" />
+```
+
 ## tailwindcss
 
 ```shell
