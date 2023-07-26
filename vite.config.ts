@@ -14,8 +14,15 @@ const isProduction = process.env.NODE_ENV === "production";
 const CDN_URL = "https://xxx.xxx.xxx";
 
 // here log the process.argv to the cli, ex. pnpm run dev -- --theme=11
-console.log("process =====> ", process.argv.slice(2));
-console.log("process npm config theme =====> ", process.env);
+// console.log("process =====> ", process.argv.slice(2));
+const _argv = process.argv.slice(2);
+const regex = /^--theme=(\d+)$/;
+const match = _argv[1].match(regex);
+if (match) {
+  console.log("theme =====> ", match[1]);
+} else {
+  console.log("no value found for --theme");
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
