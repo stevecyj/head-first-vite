@@ -1,5 +1,7 @@
 import styles from "./index.module.scss";
 import { ReactComponent as ReactLogo } from "@assets/icons/logo.svg";
+import packageObj from "../../../package.json";
+console.log("package", packageObj.version);
 
 import logoSrc from "@assets/imgs/vite.png";
 export function Header() {
