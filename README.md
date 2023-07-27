@@ -808,3 +808,12 @@ const iconUrls = Object.values<Icon>(icons as { [s: string]: Icon }).map(
 ```javascript
 import 'virtual:svg-icons-register';
 ```
+
+## 預構建
+
+### 自動開啟
+
+第一次啟動專案時，預構建產物目錄
+ `/Users/steve.tsao/projects-practice/vite-project/node_modules/.vite`
+
+![prebundling](./reademe/prebundling.png)
