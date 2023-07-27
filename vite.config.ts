@@ -7,7 +7,7 @@ import viteEslint from "vite-plugin-eslint";
 import viteStylelint from "vite-plugin-stylelint";
 import svgr from "vite-plugin-svgr";
 import viteImagemin from "vite-plugin-imagemin";
-import { check } from "prettier";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
 const resolve = (str: string) => normalizePath(path.resolve(__dirname, str));
 const variablePath = resolve("src/variables.scss");
@@ -69,6 +69,9 @@ export default defineConfig({
           }
         ]
       }
+    }),
+    createSvgIconsPlugin({
+      iconDirs: [path.join(__dirname, "src/assets/icons")]
     })
   ],
   css: {

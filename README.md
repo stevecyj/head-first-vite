@@ -718,3 +718,9 @@ pnpm run build
 ```
 
 ![imagemin](./reademe/imagemin.png)
+
+### 減少 svg 請求
+
+```shell
+pnpm i vite-plugin-svg-icons -D
+```
