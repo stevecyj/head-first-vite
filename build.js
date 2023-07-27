@@ -1,5 +1,7 @@
 import * as esbuild from "esbuild";
-import fs from "node:fs";
+import envPlugin from "./plugins/env-plugin.js";
+import httpImportPlugin from "./plugins/httpImport-plugin.js";
+// import fs from "node:fs";
 
 let result = await esbuild.build({
   absWorkingDir: process.cwd(),
@@ -12,7 +14,8 @@ let result = await esbuild.build({
   loader: {
     ".png": "base64"
   },
-  outdir: "./dist"
+  outdir: "./dist",
+  plugins: [httpImportPlugin]
 });
 
 // fs.writeFileSync("meta.json", JSON.stringify(result.metafile));
