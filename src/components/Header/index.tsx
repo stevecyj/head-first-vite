@@ -10,13 +10,33 @@ worker.addEventListener("message", (event) => {
   console.log("event", event);
 });
 
-const icons = import.meta.globEager("../../assets/icons/logo-*.svg");
-const iconUrls = Object.values(icons).map((mod) => {
-  // 如 ../../assets/icons/logo-1.svg -> logo-1
-  const fileName = mod.default.split("/").pop();
-  const [svgName] = fileName.split(".");
-  return svgName;
+interface Icon {
+  default: string;
+}
+const icons = import.meta.glob("../../assets/icons/logo-*.svg", {
+  eager: true
 });
+const iconUrls = Object.values<Icon>(icons as { [s: string]: Icon }).map(
+  (mod) => {
+    // 如 ../../assets/icons/logo-1.svg -> logo-1
+    console.log("mod", mod);
+    // 確保 mod.default 的值存在並且符合預期的格式
+    if (mod.default && typeof mod.default === "string") {
+      const fileName = mod.default.split("/").pop();
+      if (fileName) {
+        const [svgName] = fileName.split(".");
+        console.log("svgName", svgName);
+        return svgName;
+      } else {
+        console.warn("Invalid fileName format:", mod.default);
+        // return someDefaultValue; // 可選：如果有預設值的話，可以返回一個預設值
+      }
+    } else {
+      console.warn("Invalid mod.default value:", mod.default);
+      // return someDefaultValue; // 可選：如果有預設值的話，可以返回一個預設值
+    }
+  }
+);
 
 import logoSrc from "@assets/imgs/vite.png";
 export function Header() {

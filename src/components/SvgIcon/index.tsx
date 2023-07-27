@@ -1,9 +1,9 @@
 // SvgIcon/index.tsx
 export interface SvgIconProps {
-  name: string;
+  name: string | undefined;
   prefix?: string;
   color?: string;
-  [key: string]: string;
+  [key: string]: string | undefined;
 }
 
 export default function SvgIcon({

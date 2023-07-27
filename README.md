@@ -724,3 +724,87 @@ pnpm run build
 ```shell
 pnpm i vite-plugin-svg-icons -D
 ```
+
+```javascript
+// vite.config.ts
+import {
+    createSvgIconsPlugin
+} from 'vite-plugin-svg-icons';
+
+{
+    plugins: [
+        // 省略其它插件
+        createSvgIconsPlugin({
+            iconDirs: [path.join(__dirname, 'src/assets/icons')]
+        })
+    ]
+}
+```
+
+#### 在 src/components目錄下新增SvgIcon组件
+
+```JSX
+// SvgIcon/index.tsx
+export interface SvgIconProps {
+  name: string | undefined;
+  prefix?: string;
+  color?: string;
+  [key: string]: string | undefined;
+}
+
+export default function SvgIcon({
+  name,
+  prefix = "icon",
+  color = "#333",
+  ...props
+}: SvgIconProps) {
+  const symbolId = `#${prefix}-${name}`;
+
+  return (
+    <svg {...props} aria-hidden="true">
+      <use href={symbolId} fill={color} />
+    </svg>
+  );
+}
+```
+
+#### 回到 Header
+
+```JSX
+import SvgIcon from "../SvgIcon";
+
+interface Icon {
+  default: string;
+}
+const icons = import.meta.glob("../../assets/icons/logo-*.svg", {
+  eager: true
+});
+const iconUrls = Object.values<Icon>(icons as { [s: string]: Icon }).map(
+  (mod) => {
+    // 如 ../../assets/icons/logo-1.svg -> logo-1
+    console.log("mod", mod);
+    // 確保 mod.default 的值存在並且符合預期的格式
+    if (mod.default && typeof mod.default === "string") {
+      const fileName = mod.default.split("/").pop();
+      if (fileName) {
+        const [svgName] = fileName.split(".");
+        console.log("svgName", svgName);
+        return svgName;
+      } else {
+        console.warn("Invalid fileName format:", mod.default);
+        // return someDefaultValue; // 可選：如果有預設值的話，可以返回一個預設值
+      }
+    } else {
+      console.warn("Invalid mod.default value:", mod.default);
+      // return someDefaultValue; // 可選：如果有預設值的話，可以返回一個預設值
+    }
+  }
+);
+
+```
+
+#### src/main.tsx
+
+```javascript
+import 'virtual:svg-icons-register';
+```
