@@ -7,7 +7,7 @@ let result = await esbuild.build({
   bundle: true,
   splitting: true,
   sourcemap: true,
-  metafile: true,
+  // metafile: true,
   format: "esm",
   loader: {
     ".png": "base64"
@@ -15,4 +15,4 @@ let result = await esbuild.build({
   outdir: "./dist"
 });
 
-fs.writeFileSync("meta.json", JSON.stringify(result.metafile));
+// fs.writeFileSync("meta.json", JSON.stringify(result.metafile));
