@@ -9,6 +9,7 @@ let result = await esbuild.build({
   bundle: true,
   splitting: true,
   sourcemap: true,
+  // minify: true,
   // metafile: true,
   format: "esm",
   loader: {
