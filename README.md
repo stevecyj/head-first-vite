@@ -899,3 +899,18 @@ export default defineConfig({
 * build 訊息
 
 ![legacy](./reademe/polyfills.png)
+
+## SSR
+
+### CSR
+
+* 首頁加載速較慢
+* SEO 不友好
+
+### SSR 如何解決
+
+* 服務端生成完整的 HTML，再返回給客戶端，瀏覽器不依賴 js 渲染頁面
+
+### hydrate
+
+* SSR 只能生成頁面內容和結構，無法完成事件綁定。需要瀏覽器執行 CSR 的 js 代碼，才能完成事件綁定。
