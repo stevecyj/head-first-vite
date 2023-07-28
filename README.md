@@ -858,3 +858,44 @@ import 'virtual:svg-icons-register';
 #### 函式
 
 容易造成循環引用，需要再處理
+
+## 語法降級，polyfill
+
+```shell
+pnpm i @babel/cli @babel/core @babel/preset-env
+```
+
+```shell
+pnpm i @babel/cli @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/runtime @babel/runtime-corejs3 core-js
+```
+
+* target 配置：<https://github.com/browserslist/browserslist>
+* 對應瀏覽器列表：<https://browserslist.dev/?q=bGFzdCAyIHZlcnNpb25z>
+
+### 💡vite 語法降級 與 polyfill 注入
+
+```shell
+pnpm i @vitejs/plugin-legacy -D
+```
+
+```javascript
+// vite.config.ts
+import legacy from '@vitejs/plugin-legacy';
+import {
+    defineConfig
+} from 'vite'
+
+export default defineConfig({
+    plugins: [
+        // 省略其它插件
+        legacy({
+            // 设置目标浏览器，browserslist 配置语法
+            targets: ['ie >= 11'],
+        })
+    ]
+})
+```
+
+* build 訊息
+
+![legacy](./reademe/polyfills.png)

@@ -8,6 +8,7 @@ import viteStylelint from "vite-plugin-stylelint";
 import svgr from "vite-plugin-svgr";
 import viteImagemin from "vite-plugin-imagemin";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import legacy from "@vitejs/plugin-legacy";
 
 const resolve = (str: string) => normalizePath(path.resolve(__dirname, str));
 const variablePath = resolve("src/variables.scss");
@@ -72,6 +73,10 @@ export default defineConfig({
     }),
     createSvgIconsPlugin({
       iconDirs: [path.join(__dirname, "src/assets/icons")]
+    }),
+    legacy({
+      // 设置目标浏览器，browserslist 配置语法
+      targets: ["ie >= 11"]
     })
   ],
   css: {
