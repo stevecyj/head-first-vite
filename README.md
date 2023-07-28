@@ -817,3 +817,44 @@ import 'virtual:svg-icons-register';
  `/Users/steve.tsao/projects-practice/vite-project/node_modules/.vite`
 
 ![prebundling](./reademe/prebundling.png)
+
+## code splitting
+
+### manualChunks
+
+* 可以配置物件或函式
+
+#### 物件
+
+```javascript
+// vite.config.ts
+{
+    build: {
+        rollupOptions: {
+            output: {
+                // manualChunks 配置
+                manualChunks: {
+                    // 将 React 相关库打包成单独的 chunk 中
+                    'react-vendor': ['react', 'react-dom'],
+                    // 将 Lodash 库的代码单独打包
+                    'lodash': ['lodash-es'],
+                    // 将组件库的代码打包
+                    'library': ['antd', '@arco-design/web-react'],
+                },
+            },
+        }
+    },
+}
+```
+
+* before
+
+![before](./reademe/code-splitting-before.png)
+
+* after，把 lodash 和 library 打包成獨立的 chunk
+
+![after](./reademe/code-splitting-after.png)
+
+#### 函式
+
+容易造成循環引用，需要再處理
