@@ -27,8 +27,8 @@ function checkArgv(_argv: string[]) {
 }
 checkArgv(_argv);
 
-const regex = /^--themethemetheme=(\d+)$/;
-const match = _argv[99]?.match(regex);
+const regex = /^--themethemethemethemethemethemetheme=(\d+)$/;
+const match = _argv[99999]?.match(regex);
 if (match) {
   console.log("theme =====> ", match[1]);
 } else {
