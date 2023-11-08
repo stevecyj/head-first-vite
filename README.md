@@ -1,4 +1,4 @@
-# head first vite
+# head first vite (vite react)
 
 ## reference
 
