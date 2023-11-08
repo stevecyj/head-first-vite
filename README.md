@@ -7,12 +7,16 @@
 ## node env
 
 ```shell
-16.14.0
+>= 16.14.0
 ```
+
+環境搭建
 
 ```shell
 npm i -g pnpm
 ```
+
+項目初始化
 
 ```shell
 pnpm create vite
