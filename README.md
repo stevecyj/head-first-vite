@@ -203,8 +203,16 @@ export default defineConfig({
 
 ## eslint
 
+install
+
 ```shell
 pnpm i -D eslint
+```
+
+init
+
+```shell
+npx eslint --init
 ```
 
 ![eslint](./reademe/eslintInstall.png)
