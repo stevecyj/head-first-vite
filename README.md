@@ -24,6 +24,12 @@ pnpm create vite
 
 > main.tsx裡，一个import 语句即代表一个 HTTP 请求
 
+| npm command         | pnpm equivalent     |
+|---------------------|---------------------|
+| npm install         | pnpm install        |
+| npm i <pkg>         | pnpm add <pkg>      |
+| npm run <cmd>       | pnpm <cmd>          |
+
 ## css 預處理器
 
 ```shell
