@@ -22,6 +22,8 @@ npm i -g pnpm
 pnpm create vite
 ```
 
+> main.tsx裡，一个import 语句即代表一个 HTTP 请求
+
 ## css 預處理器
 
 ```shell
