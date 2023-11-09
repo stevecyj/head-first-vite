@@ -30,6 +30,12 @@ pnpm create vite
 | npm i <pkg>         | pnpm add <pkg>      |
 | npm run <cmd>       | pnpm <cmd>          |
 
+### allowSyntheticDefaultImports
+
+> 模块 ""path"" 只能在使用 "allowSyntheticDefaultImports" 标志时进行默认导入，需要加入"allowSyntheticDefaultImports"标志的文件是tsconfig.node.json，而不是tsconfig.json
+
+> 如果tsconfig.json里配置了allowSyntheticDefaultImports还是报错，有可能是配置了"references": [{ "path": "./tsconfig.node.json" }]，然后再去tsconfig.node.json配置"allowSyntheticDefaultImports": true就可以了
+
 ## css 預處理器
 
 ```shell
