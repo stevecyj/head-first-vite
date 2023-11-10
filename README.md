@@ -302,11 +302,17 @@ module.exports = {
 ## Prettier
 
 ```shell
-echo {} > .prettierrc.json
+echo {} > .prettierrc
 ```
 
 ```shell
 pnpm i eslint-config-prettier eslint-plugin-prettier -D
+```
+
+### cli
+
+```shell
+prettier --config ./.prettierrc --write .
 ```
 
 * eslint-config-prettier: 覆盖掉 eslint 中與 prettier 衝突的規則，<https://github.com/prettier/eslint-config-prettier#installation>
